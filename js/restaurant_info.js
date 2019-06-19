@@ -87,7 +87,8 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   address.innerHTML = restaurant.address;
 
   const image = document.getElementById('restaurant-img');
-  image.className = 'restaurant-img'
+  image.className = 'restaurant-img';
+  image.alt = `Picture of ${restaurant.name}`;
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
   const cuisine = document.getElementById('restaurant-cuisine');
@@ -191,4 +192,13 @@ getParameterByName = (name, url) => {
   if (!results[2])
     return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+const scroller = document.getElementById("header");
+
+window.onscroll = function() {
+  scroller.classList.add("scrollenabled");
+  if(window.pageYOffset === 0) {
+    scroller.classList.remove("scrollenabled");
+  }
 }
